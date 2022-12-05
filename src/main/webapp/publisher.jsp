@@ -31,30 +31,37 @@
 		</p>
 
 		<!-- select cam -->
-		<select name="camera-select" id="camera-select-field">
-			<option value="123">Demo</option>
-		</select> <br>
+    <div id="camera-select-block">
+      <label for="">Choose Camera: </label>
+      <select name="camera-select" id="camera-select-field">
+        <option value="123">Demo</option>
+      </select> <br>
+    </div>
+  
 
 
 		<div class="row">
-			<div class="col-6">
+			<div class="col-lg-6 col-md-12">
 				<!-- bitrate -->
 				<div id="statistics-field" class="statistics-field text-center"
 					style="height: 30px; color: red"></div>
 
 				<div id="video-container">
-					<video id="red5pro-publisher" autoplay playsinline controls></video>
+					<video style="width: 100%;height:auto" id="red5pro-publisher" autoplay playsinline controls></video>
 				</div>
 
 				<div id="btn-start-stop" style="margin-top: 20px">
-					<button onclick="startStream()">Start Stream</button>
+					<button class="btn btn-primary" onclick="startStream()">Start Stream</button>
 				</div>
 			</div>
-			<div class="col-6" class="text-center">
-				<h4 style="color: blue; margin-top: 20px">Event log:</h4>
-				<button onclick="clearLog()">Clear</button>
+			<div class="col-lg-6 col-md-12" >
+				<h4  class="text-center" style="color: blue; margin-top: 20px">Event log:</h4>
+        <div class="text-center">
+          <button class="btn btn-warning"  onclick="clearLog()">Clear</button>
+        </div>
+			
 
-				<div id="event-log" style="color: blue; margin-top: 20px">
+				<div class="text-center" id="event-log" style="color: blue; margin-top: 20px">
 					<!-- div  log -->
 				</div>
 			</div>
@@ -183,11 +190,11 @@
       
           //toggle button
           document.getElementById("btn-start-stop").innerHTML = `
-          <button onclick="stopStream()">Stop Stream</button>
+          <button class="btn btn-danger" onclick="stopStream()">Stop Stream</button>
           `;
 
           //hide came
-          document.getElementById("camera-select-field").style.display = "none";
+          document.getElementById("camera-select-block").style.display = "none";
 		  
 		  
           //set bitrate
@@ -196,7 +203,7 @@
           //log event
           rtcPublisher.on("*", onPublisherEvent);
 
-          console.log(`Publishing with stream name: ${nameStream}`);
+          console.log(`Publishing with stream name: \${nameStream}`);
 
         } catch (error) {
           console.error("Could not publish: " + JSON.stringify(error));
@@ -213,13 +220,13 @@
         rtcPublisher.off("*", onPublisherEvent);
         // await rtcPublisher.unpreview();  
         document.getElementById("btn-start-stop").innerHTML = `
-          <button onclick="startStream()">Start Stream</button>
+          <button class="btn btn-primary" onclick="startStream()">Start Stream</button>
           `;
         document.getElementById("name-stream").value = "";
         document.getElementById('statistics-field').innerText = '';
 
          //show came
-         document.getElementById("camera-select-field").style.display = "block";
+         document.getElementById("camera-select-block").style.display = "block";
 
         console.log("Stopped publisher stream!");
       } catch (error) {
@@ -233,7 +240,7 @@
       var eventLog = "[Red5ProPublisher] " + event.type + ".";
 
       document.getElementById("event-log").innerHTML += `
-            <p> ${eventLog}
+            <p> \${eventLog}
               </p>
           `;
           }

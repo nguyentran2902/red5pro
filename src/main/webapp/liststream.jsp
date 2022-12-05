@@ -66,15 +66,15 @@
           <div class="row">
 
             <!-- video block -->
-            <div class="col-6 mt-3">
+            <div class="col-lg-6 col-md-12 mt-3">
               <div id="bitrate-div" class="text-center" style="height: 50px;color: blue"></div>
-              <div id="video-container" class="mt-1">
-                <video id="red5pro-subscriber" width="720" height="520" controls autoplay></video>
+              <div id="video-container" class="mt-1 text-center">
+                <video id="red5pro-subscriber" controls autoplay></video>
               </div>
               <h4 class="text-center" style="color: blue;margin-top: 20px;">Event RTCSubscriber log:</h4>
-              <div class="text-center"> <button  onclick="clearLog()">Clear Log</button></div>
+              <div class="text-center "> <button class="btn btn-warning"  onclick="clearLog()">Clear Log</button></div>
              
-              <div id="event-log" class="text-center" style="color: blue;margin-top: 20px;">
+              <div id="event-log" class="text-center " style="color: blue;margin-top: 20px;">
       
                 <!-- div clear log -->
               </div>
@@ -82,12 +82,12 @@
             </div>
 
             <!-- report block -->
-            <div class="col-6">
+            <div class="col-lg-6 col-md-12">
 
               <div id="report-container" class="reports-container">
 
                 <div id="show-hide-event" style="height: 36px;">
-                  <button onclick="showEvent()">Show detail event livestream</button>
+                  <button class="btn btn-warning" onclick="showEvent()">Show detail event livestream</button>
                 </div>
 
                 <div id="report-content" class="container" style="display: none;">
@@ -95,7 +95,7 @@
 
                     <!-- video -->
                     <div class="col-6">
-                      <div class="report-field">
+                      <div class="report-field mt-2">
                         <div id="video-report_stats" class="statistics-field text-center"  style="height: 50px;color: blue"></div>
                         <div  class="report-field_header text-center" style=" background-color: rgb(211, 22, 22); color: white;height: 42px;line-height: 42px;">Video</div>
                         <div id="video-report" class="report mt-2"></div>
@@ -105,7 +105,7 @@
   
                     <div class="col-6">
                       <!-- audio -->
-                      <div class="report-field">
+                      <div class="report-field mt-2">
                         <div id="audio-report_stats" class="statistics-field text-center"  style="height: 50px;color: blue"></div>
                         <div  class="report-field_header text-center" style=" background-color: rgb(211, 22, 22); color: white;height: 42px;line-height: 42px;">Audio</div>
                         <div id="audio-report" class="report mt-2"></div>
@@ -137,13 +137,13 @@
 
        function showEvent(){
         document.getElementById("report-content").style.display="block";
-        document.getElementById("show-hide-event").innerHTML = ` <button onclick="hideEvent()">Hide event livestream</button>`
+        document.getElementById("show-hide-event").innerHTML = ` <button class="btn btn-warning" onclick="hideEvent()">Hide event livestream</button>`
       
        }
 
        function hideEvent(){
         document.getElementById("report-content").style.display="none";
-        document.getElementById("show-hide-event").innerHTML = ` <button onclick="showEvent()">Show detail event livestream</button>`
+        document.getElementById("show-hide-event").innerHTML = ` <button  class="btn btn-warning" onclick="showEvent()">Show detail event livestream</button>`
       
        }
 
