@@ -1,69 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
-  
-  <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script> </head>
-  <body style="margin-top: 50px">
+<head>
+<meta charset="ISO-8859-1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+</head>
+<body style="margin-top: 50px">
 
-    <div class="container">
-          <!-- name -->
-    <div style="margin-bottom: 20px">
-      <label style="margin-right: 20px" for="">Name stream:</label>
+	<div class="container">
+		<!-- name -->
+		<div style="margin-bottom: 20px">
+			<label style="margin-right: 20px" for="">Name stream:</label> <input
+				id="name-stream" type="text" />
+			<p id="mess-err" style="color: red" for=""></p>
+		</div>
 
-      <input id="name-stream" type="text" />
-      <p id="mess-err" style="color: red" for=""></p>
-    </div>
+		<!-- checkbox Record-->
+		<p class="video-form-item">
+			<label for="enable-record-field">Enable Recording:</label> <input
+				type="checkbox" name="enable-record-field" id="enable-record-field"></input>
+		</p>
 
-    <!-- checkbox Record-->
-    <p class="video-form-item">
-      <label for="enable-record-field">Enable Recording:</label>
-      <input type="checkbox" name="enable-record-field" id="enable-record-field"></input>
-    </p>
-
-    <!-- select cam -->
-    <select name="camera-select" id="camera-select-field">
-      <option value="123">Demo</option>
-    </select> <br>
+		<!-- select cam -->
+		<select name="camera-select" id="camera-select-field">
+			<option value="123">Demo</option>
+		</select> <br>
 
 
-    <div class="row">
-      <div class="col-6">
-           <!-- bitrate -->
-    <div id="statistics-field" class="statistics-field text-center"  style="height: 30px;color: red"></div>
+		<div class="row">
+			<div class="col-6">
+				<!-- bitrate -->
+				<div id="statistics-field" class="statistics-field text-center"
+					style="height: 30px; color: red"></div>
 
-    <div id="video-container">
-      <video id="red5pro-publisher" autoplay playsinline controls></video>
-    </div>
+				<div id="video-container">
+					<video id="red5pro-publisher" autoplay playsinline controls></video>
+				</div>
 
-    <div id="btn-start-stop" style="margin-top: 20px">
-      <button onclick="startStream()">Start Stream</button>
-    </div>
-      </div>
-      <div class="col-6" class="text-center">
-        <h4 style="color: blue; margin-top: 20px">Event log:</h4>
-        <button onclick="clearLog()">Clear</button>
-    
-        <div id="event-log" style="color: blue; margin-top: 20px">
-          <!-- div  log -->
-        </div>
-      </div>
-    </div>
-   
+				<div id="btn-start-stop" style="margin-top: 20px">
+					<button onclick="startStream()">Start Stream</button>
+				</div>
+			</div>
+			<div class="col-6" class="text-center">
+				<h4 style="color: blue; margin-top: 20px">Event log:</h4>
+				<button onclick="clearLog()">Clear</button>
 
- 
-    </div>
+				<div id="event-log" style="color: blue; margin-top: 20px">
+					<!-- div  log -->
+				</div>
+			</div>
+		</div>
 
-  </body>
 
-  <!-- WebRTC Shim -->
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-  <!-- Exposes `red5prosdk` on the window global. -->
-  <script src="https://cdn.jsdelivr.net/npm/red5pro-webrtc-sdk"></script>
 
-  <script type="text/javascript">
+	</div>
+
+</body>
+
+<!-- WebRTC Shim -->
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<!-- Exposes `red5prosdk` on the window global. -->
+<script src="https://cdn.jsdelivr.net/npm/red5pro-webrtc-sdk"></script>
+
+<script type="text/javascript">
 
     //tạo biến rtcPublisher
     var rtcPublisher = new red5prosdk.RTCPublisher();
